@@ -11,7 +11,7 @@ dotenv.config();
 const isProduction = process.env.NODE_ENV === "production";
 const isDevelopment = !isProduction;
 
-const baseURL = process.env.BASE_URL ?? "/";
+const baseURL = process.env.BASE_URL || "/";
 
 const config: WebpackOptionsNormalized = {
   mode: isProduction ? "production" : "development",
