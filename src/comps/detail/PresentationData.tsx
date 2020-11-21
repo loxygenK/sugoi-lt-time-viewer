@@ -14,12 +14,12 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
+  margin-bottom: 0.5em;
   font-size: 2.5em;
   line-height: 1.1em;
-  margin-bottom: 0.5em;
 `;
 
-export function PresentationData(props: { presentation: Presentation }) {
+export function PresentationData(props: { presentation: Presentation }): React.ReactElement {
   return (
     <PresentationDataRoot>
       <PresenterInfo presenter={props.presentation.presenter} />

@@ -8,13 +8,13 @@ const Name = styled.span`
 `;
 
 const TwitterId = styled.span`
-  font-family: "Roboto Mono", monospace;
   margin-left: 0.5em;
+  font-family: "Roboto Mono", monospace;
   font-size: 1.5em;
   line-height: 1em;
 `;
 
-export function PresenterInfo(props: { presenter: Presenter }) {
+export function PresenterInfo(props: { presenter: Presenter }): React.ReactElement {
   return (
     <div>
       <Name>{props.presenter.name}</Name>

@@ -5,9 +5,9 @@ import { Caption } from "./detail/Caption";
 import { PresentationData } from "./detail/PresentationData";
 
 const PresentationInfoRoot = styled.div`
+  padding: 5em 0;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 900;
-  padding: 5em 0;
   color: #4f4f69;
 `;
 
