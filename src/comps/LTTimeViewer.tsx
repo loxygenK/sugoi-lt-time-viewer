@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { TitleBand } from "./TitleBand";
 import { PresentationInfo } from "./PresentationInfo";
+import { PresentationBand } from "./PresentationBand";
 
 const LTTimeViewerRoot = styled.div`
   box-sizing: border-box;
@@ -19,6 +20,8 @@ export class LTTimeViewer extends React.Component<LTTimeViewerProps> {
       <LTTimeViewerRoot>
         <TitleBand title={this.props.ltData.title} subTitle={this.props.ltData.subTitle} />
         <PresentationInfo presentation={this.props.ltData.detail} />
+
+        <PresentationBand bandText={this.props.ltData.title} />
       </LTTimeViewerRoot>
     );
   }
