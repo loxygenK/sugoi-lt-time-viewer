@@ -15,6 +15,8 @@ export function PresentationInfo(props: { presentation: Presentation }): React.R
   return (
     <PresentationInfoRoot>
       <Caption caption={"次の発表者"} />
+      <br />
+      <PresentationData presentation={props.presentation} />
     </PresentationInfoRoot>
   );
 }
