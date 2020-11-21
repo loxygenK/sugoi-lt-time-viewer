@@ -11,8 +11,8 @@
     "lint:fix": "run-p eslint:fix stylelint:fix",
     "eslint": "eslint --ignore-path .gitignore '**/*.{ts,tsx}'",
     "eslint:fix": "eslint --ignore-path .gitignore '**/*.{ts,tsx}' --fix",
-    "stylelint": "stylelint --ignore-path .gitignore '**/*.{css,scss}'",
-    "stylelint:fix": "stylelint --ignore-path .gitignore '**/*.{css,scss}' --fix"
+    "stylelint": "stylelint --ignore-path .gitignore '**/*.{ts,tsx}'",
+    "stylelint:fix": "stylelint --ignore-path .gitignore '**/*.{ts,tsx}' --fix"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": "eslint --fix",
