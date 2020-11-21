@@ -1,10 +1,14 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 
-import styles from "./App.module.scss";
+const Title = styled.h1`
+  font-size: 3rem;
+  color: lightblue;
+`;
 
 const App: FC = () => (
   <div>
-    <h1 className={styles.title}>Hello, world!</h1>
+    <Title>Hello, world!</Title>
   </div>
 );
 
