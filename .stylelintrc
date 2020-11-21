@@ -1,6 +1,8 @@
 {
+  "processors": ["stylelint-processor-styled-components"],
   "extends": [
     "@approvers/stylelint-config-scss",
-    "stylelint-config-recess-order"
+    "stylelint-config-recess-order",
+    "stylelint-config-styled-components"
   ]
 }
