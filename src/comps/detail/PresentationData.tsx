@@ -7,12 +7,12 @@ const PresentationDataRoot = styled.div`
   margin: 2em 3em;
 `;
 
-const PresentationTitle = styled.div`
+const Title = styled.div`
   font-size: 5em;
   line-height: 1.1em;
 `;
 
-const PresentationDescription = styled.div`
+const Description = styled.div`
   font-size: 2.5em;
   line-height: 1.1em;
 `;
@@ -21,15 +21,15 @@ export function PresentationData(props: { presentation: Presentation }) {
   return (
     <PresentationDataRoot>
       <PresenterInfo presenter={props.presentation.presenter} />
-      <PresentationTitle>{props.presentation.presentTitle}</PresentationTitle>
-      <PresentationDescription>
+      <Title>{props.presentation.presentTitle}</Title>
+      <Description>
         {props.presentation.presentDescription.split("\n").map((line) => (
           <>
             {line}
             <br />
           </>
         ))}
-      </PresentationDescription>
+      </Description>
     </PresentationDataRoot>
   );
 }
