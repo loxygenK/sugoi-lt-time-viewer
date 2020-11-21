@@ -1,12 +1,8 @@
 {
-  "name": "react-template",
+  "name": "sugoi-lt-time-viewer",
   "version": "0.0.0",
-  "description": "Reactのプロジェクトテンプレートです。",
-  "homepage": "https://github.com/shun-shobon/react-template#readme",
-  "bugs": "https://github.com/shun-shobon/react-template/issues",
+  "description": "限界LTに供養するつもりのLT待機画面のやつです",
   "license": "MIT",
-  "author": "Shuntaro Nishizawa <me@shun.technology> (https://github.com/shun-shobon)",
-  "repository": "https://github.com/shun-shobon/react-template.git",
   "scripts": {
     "build": "webpack",
     "clean": "rimraf dist",
