@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 import { LTTimeViewer } from "./comps/LTTimeViewer";
 import { LTData } from "./types/LTData";
+import { WebSocketListener } from "./back/WebsocketListener";
 
+const server = new WebSocketListener(12333);
 const App: FC = () => {
   const ltData: LTData = {
     title: "限界LT#2",
