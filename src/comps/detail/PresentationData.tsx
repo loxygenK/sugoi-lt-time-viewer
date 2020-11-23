@@ -25,11 +25,11 @@ export function PresentationData(props: { presentation: Presentation }): React.R
       <PresenterInfo presenter={props.presentation.presenter} />
       <Title>{props.presentation.presentTitle}</Title>
       <Description>
-        {props.presentation.presentDescription.split("\n").map((line) => (
-          <>
+        {props.presentation.presentDescription.split("\n").map((line, index) => (
+          <span key={index}>
             {line}
             <br />
-          </>
+          </span>
         ))}
       </Description>
       {props.presentation.tags.map((tagName, index) => (
