@@ -42,7 +42,7 @@ export class LTTimeViewer extends React.Component<LTTimeViewerProps, LTTimeViewe
       ltData: undefined,
     };
     this.wsClient = new WebSocketListener(props.portNumber ?? 12333);
-    this.wsClient.addCommandListener("SLT", (argument, wsClient) => this.handleLTInfo(argument));
+    this.wsClient.addCommandListener("SLT", (argument) => this.handleLTInfo(argument));
   }
 
   componentDidMount(): void {

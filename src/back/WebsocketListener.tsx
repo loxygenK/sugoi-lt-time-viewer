@@ -13,14 +13,17 @@ export class WebSocketListener {
     Log.Success("WSL-CST", "Hi, I'm WebSocketListener! Call connect() to connect to the server.");
   }
 
-  connect() {
+  connect(): void {
     Log.Info("WSL-CNT", `Connecting via port number ${this.portNumber}...`);
     this.wsClient = new WebSocket(`ws://localhost:${this.portNumber}/`);
     this.wsClient.addEventListener("open", () => this.onConnected());
     this.wsClient.addEventListener("message", (e) => this.onMessage(e));
   }
 
-  addCommandListener(command: Command, onCommand: (argument: string, wsClient: WebSocket) => void) {
+  addCommandListener(
+    command: Command,
+    onCommand: (argument: string, wsClient: WebSocket) => void,
+  ): void {
     if (this.wsClient) {
       Log.Failure(
         "WSL-ACL",
