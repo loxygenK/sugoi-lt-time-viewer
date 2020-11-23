@@ -23,16 +23,16 @@ export function PresentationData(props: { presentation: Presentation }): React.R
   return (
     <PresentationDataRoot>
       <PresenterInfo presenter={props.presentation.presenter} />
-      <Title>{props.presentation.presentTitle}</Title>
+      <Title>{props.presentation.title}</Title>
       <Description>
-        {props.presentation.presentDescription.split("\n").map((line, index) => (
+        {props.presentation.description.split("\n").map((line, index) => (
           <span key={index}>
             {line}
             <br />
           </span>
         ))}
       </Description>
-      {props.presentation.tags.map((tagName, index) => (
+      {props.presentation.tag.map((tagName, index) => (
         <PresentationTag tagName={tagName} key={index} />
       ))}
     </PresentationDataRoot>
