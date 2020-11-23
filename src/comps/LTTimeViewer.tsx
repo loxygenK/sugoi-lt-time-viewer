@@ -16,13 +16,13 @@ const LTTimeViewerRoot = styled.div`
 
 const FallbackBox = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   font-family: "Noto Sans JP", sans-serif;
-  font-weight: 900;
   font-size: 5em;
-  align-items: center;
-  justify-content: center;
+  font-weight: 900;
 `;
 
 type LTTimeViewerProps = {
