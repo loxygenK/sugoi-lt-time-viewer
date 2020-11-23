@@ -1,12 +1,32 @@
 import * as Log from "../utils/Logger";
 
 export class WebSocketListener {
-  private wsClient: WebSocket;
+  private portNumber: number;
+  private wsClient: WebSocket | undefined;
+  private listeners: Map<string, (argument: string, wsClient: WebSocket) => void> = new Map();
 
   constructor(portNumber: number) {
-    this.wsClient = new WebSocket(`ws://localhost:${portNumber}/`);
+    this.portNumber = portNumber;
+    Log.Success("WSL-CST", "Hi, I'm WebSocketListener! Call connect() to connect to the server.");
+  }
+
+  connect() {
+    Log.Info("WSL-CNT", `Connecting via port number ${this.portNumber}...`);
+    this.wsClient = new WebSocket(`ws://localhost:${this.portNumber}/`);
     this.wsClient.addEventListener("open", () => this.onConnected());
     this.wsClient.addEventListener("message", (e) => this.onMessage(e));
+  }
+
+  addCommandListener(command: Command, onCommand: (argument: string, wsClient: WebSocket) => void) {
+    if (this.wsClient) {
+      Log.Failure(
+        "WSL-ACL",
+        `A command listener for the command "${command}" has been added after the ` +
+          `connect() is called.\n` +
+          `Please consider adding command listeners before calling connect().`,
+      );
+    }
+    this.listeners.set(command, onCommand);
   }
 
   private onConnected(): void {
