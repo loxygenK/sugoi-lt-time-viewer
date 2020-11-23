@@ -1,4 +1,7 @@
 import * as Log from "../utils/Logger";
+import { NotEnsuredException } from "../utils/Assert";
+
+export type Command = "SLT";
 
 export class WebSocketListener {
   private portNumber: number;
@@ -35,18 +38,23 @@ export class WebSocketListener {
   }
 
   private onMessage(event: MessageEvent): void {
+    if (this.wsClient == null) throw new NotEnsuredException("wsClient is not null");
     const message = event.data.toString();
     if (message.startsWith("CLIENT|")) return;
-    Log.Success("WSL-MSG", "A message received!");
-    Log.Info("WSL-MSG", `RX<< ${message}`);
+    Log.Success("WSL-MSG", "A message received!\n" + message);
 
-    const body = message.substring(7).split(">>");
-    if (body[1].startsWith("?")) {
+    const body = message.substring(7).split(">>")[1];
+    const command = body.split("#");
+    if (command[0].startsWith("?")) {
       Log.Failure(
         "WSL-MSG",
-        `The command execution failure has been reported.\nCommand : ${body[0]}\nResponse: ${body[1]}`,
+        `The command execution failure has been reported.\nCommand : ${command[0]}\nResponse: ${body[1]}`,
       );
       return;
+    }
+    if (this.listeners.has(command[0])) {
+      const func = this.listeners.get(command[0]);
+      if (func != null) func(command.slice(1).join("#"), this.wsClient);
     }
   }
 
@@ -56,6 +64,7 @@ export class WebSocketListener {
   }
 
   private sendText(text: string): void {
+    if (this.wsClient == null) throw new NotEnsuredException("wsClient is not null");
     Log.Info("WSL-STX", `TX>> ${text}`);
     this.wsClient.send(`CLIENT|${text}`);
   }
